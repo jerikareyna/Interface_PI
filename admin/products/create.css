@@ -1,0 +1,101 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: hsl(0, 0%, 95%);
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+}
+
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.container {
+  margin: auto;
+  max-width: fit-content;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+label {
+  font-size: 1.1rem;
+  font-weight: 550;
+}
+
+.name-product,
+.description,
+.precio,
+.imagen {
+  margin-bottom: 1rem;
+}
+
+.name-product-insert {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  font-family: inherit;
+  border-radius: 0.5rem;
+  border: 0.2rem solid #bf7083;
+  transition: border 200ms ease-in-out;
+}
+
+.name-product-insert:hover,
+.description-text-area:hover {
+  border: 0.2rem solid #9f4147;
+}
+
+.name-product-insert,
+.description-text-area:focus-visible {
+  outline: 0;
+}
+
+.description-text-area {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 3rem;
+  resize: none;
+  font-family: inherit;
+  border-radius: 0.5rem;
+  border: 0.2rem solid #bf7083;
+  transition: border 200ms ease-in-out;
+  padding: 0.3rem;
+}
+
+.guardar-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #bf7083;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 200ms ease;
+}
+
+.guardar-button:hover{
+    background-color: #9f4147;
+}
