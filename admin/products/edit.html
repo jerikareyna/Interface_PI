@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="edit.css" />
+        <title>Create Product</title>
+      </head>
+    <body>
+        <div th:insert = "~{admin/template_admin::header_admin}"></div>
+
+        <div class="container">
+            <h2>Actualizar Producto</h2>
+            <form class="form-horizontal" th:action="@{/admin/products/save-product}" method="post"  enctype="multipart/form-data">
+                <input type="hidden" name="id" th:value="${product.id}">
+<!------------------------------------------------------------------------------------------------------------------->
+
+                <!--Ingresar el nombre del producto-->
+                <div class="name-product">
+                    <label class="name-product-label" for="name">Nombre:</label>
+                    <div class="name-product-container">
+                        <input type="text" class="name-product-insert" id="name" name="name" placeholder="Ingrese el nombre del producto" required autocomplete="off" th:value="${product.name}">
+                        <div id="prueba"></div>  
+                    </div>
+                </div>
+<!------------------------------------------------------------------------------------------------------------------->
+
+                <!--Ingresar la Descripción-->
+                <div class="description">
+                    <label class="description-label" for="description">Descripción:</label>
+                    <div class="description-text-area-container">          
+                        <textarea class="description-text-area" id="description" name="description" placeholder="Ingrese la descripcion del producto" required autocomplete="off" th:text="${product.description}"> </textarea>
+                    </div>
+                </div>
+<!------------------------------------------------------------------------------------------------------------------->
+
+                <!--Precio-->
+                <div class="precio">
+                    <label class="precio-label" for="price">Precio:</label>
+                    <div class="precio-container">          
+                        <input type="number" class="precio-input" step="any"  id="price" name="price" placeholder="Ingrese el precio del producto" th:value="${product.price}" required autocomplete="off">
+                    </div>
+                </div>
+<!------------------------------------------------------------------------------------------------------------------->
+
+                <!--Imagen-->
+                <div class="imagen">
+                    <label  class="imagen-label" for="img">Imagen:</label>
+                    <div class="imagen-container">  
+                        <input type="file" class="imagen-input" id="img" name="img">
+                    </div>
+                </div>
+<!------------------------------------------------------------------------------------------------------------------->
+
+
+                <div class="guardar-container">
+                    <div class="guardar">
+                        <button type="submit" class="guardar-button"> Guardar</button>
+                    </div>             
+                </div>
+
+            </form>
+
+
+        </div>
+        <div class="footer" th:insert = "~{admin/template_admin::footer_admin}"></div>
+</html>
