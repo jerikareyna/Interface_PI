@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <!-- <head th:insert="~{user/template_user::head}" <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />></head> -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="cart.css" />
+    <title>Create Product</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div th:insert="~{user/template_user::header}" th:if="${id==null}"></div>
+    <div
+      th:insert="~{user/template_user::userlogger}"
+      th:unless="${id==null}"
+    ></div>
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Blog Post -->
+        <div class="container-a">
+          
+        <div class="container-b">
+          <div class="row">
+              <div class="cart">
+                  
+                  <div class="tittle-principal">
+                      <span class="material-symbols-outlined"> shopping_cart </span>
+                      <h1>Carrito</h1>
+                    </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="title" scope="col">Producto</th>
+                    <th class="title" scope="col">Precio</th>
+                    <th class="title" scope="col">Cantidad</th>
+                    <th class="title" scope="col">Total</th>
+                    <th class="title" scope="col">Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="item:${cart}">
+                    <td th:text="${item.nameProduct}">Nombre</td>
+                    <td th:text="${item.price}">Precio</td>
+                    <td th:text="${item.quantity}">Cantidad</td>
+                    <td class="total" th:text="${item.getTotalPriceItem()}">
+                      Total
+                    </td>
+                    <td>
+                      <a
+                        th:href="@{/user/cart/delete-item-cart/{id} (id = ${item.idProduct})}"
+                        class="quitar"
+                        >Quitar</a
+                      >
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+
+            <div class="subtotal">
+              <h2 class="title-subtotal">SUBTOTAL</h2>
+
+              <ul class="total">
+                <li class="vacio"><h5 th:text="${total}">10</h5></li>
+                <a th:href="@{/user/order/sumary-order}" class="orden"
+                  >Ver Orden</a
+                >
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <div th:insert="~{user/template_user::footer}"></div>
+  </body>
+</html>

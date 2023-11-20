@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:insert="~{admin/template_admin::head_admin}"></head>
+  <body>
+    <div th:insert="~{admin/template_admin::header_admin}"></div>
+    <div class="stilo-product">
+      <div class="container">
+        <h2>Actualizar Producto</h2>
+        <form
+          class="form-horizontal"
+          th:action="@{/admin/products/save-product}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" name="id" th:value="${product.id}" />
+          <!------------------------------------------------------------------------------------------------------------------->
+
+          <!--Ingresar el nombre del producto-->
+          <div class="name-product">
+            <label class="name-product-label" for="name">Nombre:</label>
+            <div class="name-product-container">
+              <input
+                type="text"
+                class="name-product-insert"
+                id="name"
+                name="name"
+                placeholder="Ingrese el nombre del producto"
+                required
+                autocomplete="off"
+                th:value="${product.name}"
+              />
+              <div id="prueba"></div>
+            </div>
+          </div>
+          <!------------------------------------------------------------------------------------------------------------------->
+
+          <!--Ingresar la Descripción-->
+          <div class="description">
+            <label class="description-label" for="description"
+              >Descripción:</label
+            >
+            <div class="description-text-area-container">
+              <textarea
+                class="description-text-area"
+                id="description"
+                name="description"
+                placeholder="Ingrese la descripcion del producto"
+                required
+                autocomplete="off"
+                th:text="${product.description}"
+              >
+              </textarea>
+            </div>
+          </div>
+          <!------------------------------------------------------------------------------------------------------------------->
+
+          <!--Precio-->
+          <div class="precio">
+            <label class="precio-label" for="price">Precio:</label>
+            <div class="precio-container">
+              <input
+                type="number"
+                class="precio-input"
+                step="any"
+                id="price"
+                name="price"
+                placeholder="Ingrese el precio del producto"
+                th:value="${product.price}"
+                required
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <!------------------------------------------------------------------------------------------------------------------->
+
+          <!--Imagen-->
+          <div class="imagen">
+            <label class="imagen-label" for="img">Imagen:</label>
+            <div class="imagen-container">
+              <input type="file" class="imagen-input" id="img" name="img" title=" "/>
+            </div>
+          </div>
+          <!------------------------------------------------------------------------------------------------------------------->
+
+          <div class="guardar-container">
+            <div class="guardar">
+              <button type="submit" class="guardar-button">Guardar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer" th:insert="~{admin/template_admin::footer_admin}"></div>
+  </body>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .stilo-product {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      background-color: hsl(0, 0%, 95%);
+      display: grid;
+      place-items: center;
+      height: 100dvh;
+    }
+
+    button {
+      padding: 0;
+      border: none;
+      outline: none;
+      background: none;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+    }
+
+    input,
+    textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    .container {
+      margin: auto;
+      max-width: fit-content;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    label {
+      font-size: 1.1rem;
+      font-weight: 550;
+    }
+
+    .name-product,
+    .description,
+    .precio,
+    .imagen {
+      margin-bottom: 1rem;
+    }
+
+    .name-product-insert {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 0.2rem solid #bf7083;
+      transition: border 200ms ease-in-out;
+    }
+
+    .name-product-insert:hover,
+    .description-text-area:hover,
+    .precio-input:hover {
+      border: 0.2rem solid #9f4147;
+    }
+
+    .name-product-insert,
+    .description-text-area:focus-visible,
+    .precio-input {
+      outline: 0;
+    }
+
+    .description-text-area {
+      margin-top: 0.5rem;
+      width: 100%;
+      height: 3rem;
+      resize: none;
+      border-radius: 0.5rem;
+      border: 0.2rem solid #bf7083;
+      transition: border 200ms ease-in-out;
+      padding: 0.3rem;
+    }
+
+    .precio-input {
+      margin-top: 0.5rem;
+      width: 4rem;
+      padding: 0.3rem;
+      border: 0.2rem solid #bf7083;
+      border-radius: 0.5rem;
+      transition: border 200ms ease-in-out;
+    }
+
+    .imagen-input::file-selector-button {
+      margin: 0.5rem 0;
+      border: 0.2rem solid #bf7083;
+      padding: 0.2em 0.4em;
+      border-radius: 0.2em;
+      background-color: #fff;
+      transition: border 200ms ease-in-out;
+    }
+
+    .imagen-input::file-selector-button:hover {
+      border: 0.2rem solid #9f4147;
+    }
+
+    .guardar-button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      background-color: #bf7083;
+      color: #fff;
+      font-weight: 600;
+      transition: background-color 200ms ease;
+    }
+
+    .guardar-button:hover {
+      background-color: #9f4147;
+    }
+  </style>
+</html>
