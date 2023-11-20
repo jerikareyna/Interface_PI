@@ -1,0 +1,100 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: hsl(0, 0%, 95%);
+  height: 100dvh;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  max-width: fit-content;
+  margin: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.aling-items{
+    width: 20rem;
+
+}
+
+.registro-title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+button {
+  text-decoration: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+label {
+  font-size: 1.1rem;
+  font-weight: 550;
+}
+
+.name-container,
+.apellido-container,
+.email-container,
+.direccion-container,
+.cel-container,
+.password-container {
+  margin-bottom: 1rem;
+}
+
+input{
+
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 0.2rem solid #bf7083;
+  transition: border 200ms ease-in-out;
+
+}
+
+input:hover{
+    border: 0.2rem solid #9f4147;
+}
+
+input:focus-visible{
+    outline: 0;
+}
+
+.guardar-button{
+    padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #bf7083;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 200ms ease;
+}
+
+.guardar-button:hover{
+    background-color: #9f4147;
+}

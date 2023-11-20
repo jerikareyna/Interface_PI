@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{user/template_user::head}"></head>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+      <div class="container-nav">
+        <a class="navbar-brand" th:href="@{/home}">Naturley</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/login}">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="aling-items">
+        <div class="registro-title">
+          <h2>Registro</h2>
+        </div>
+
+        <div
+          class="alert alert-success"
+          role="alert"
+          th:text="${success}"
+          th:if="${success}"
+        ></div>
+
+        <form th:action="@{/register}" method="post" th:object="${userDto}">
+          <div class="name-container">
+            <label for="name-label">Nombre:</label>
+            <div class="aling">
+              <input
+                type="text"
+                class="name-input"
+                id="firtName"
+                name="firtName"
+                placeholder="Ingrese su nombre"
+                autocomplete="off"
+              />
+            </div>
+            <p
+              th:if="${#fields.hasErrors('firtName')}"
+              th:errors="*{firtName}"
+              th:errorclass="error"
+            ></p>
+          </div>
+
+          <div class="apellido-container">
+            <label for="apellido-label">Apellido:</label>
+            <div class="aling">
+              <input
+                type="text"
+                class="apellido-input"
+                id="lastName"
+                name="lastName"
+                placeholder="Ingrese su apellido"
+                autocomplete="off"
+              />
+            </div>
+            <p
+              th:if="${#fields.hasErrors('lastName')}"
+              th:errors="*{lastName}"
+              th:errorclass="error"
+            ></p>
+          </div>
+
+          <div class="email-container">
+            <label for="email-label">Email:</label>
+            <div class="aling">
+              <input
+                type="email"
+                class="email-input"
+                id="email"
+                name="email"
+                placeholder="Ingrese su email"
+                autocomplete="off"
+              />
+            </div>
+            <p
+              th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}"
+              th:errorclass="error"
+            ></p>
+          </div>
+
+          <div class="direccion-container">
+            <label for="direccion-label">Dirección:</label>
+            <div class="aling">
+              <input
+                type="text"
+                class="direccion-input"
+                id="address"
+                name="address"
+                placeholder="Ingrese su dirección"
+                autocomplete="off"
+              />
+            </div>
+            <p
+              th:if="${#fields.hasErrors('address')}"
+              th:errors="*{address}"
+              th:errorclass="error"
+            ></p>
+          </div>
+
+          <div class="cel-container">
+            <label for="cel-label">Teléfono:</label>
+            <div class="aling">
+              <input
+                type="text"
+                class="cel-input"
+                id="cellphone"
+                name="cellphone"
+                placeholder="Ingrese su teléfono"
+                autocomplete="off"
+              />
+            </div>
+            <p
+              th:if="${#fields.hasErrors('cellphone')}"
+              th:errors="*{cellphone}"
+              th:errorclass="error"
+            ></p>
+          </div>
+
+          <div class="password-container">
+            <label for="password-label">Contraseña</label>
+            <div class="aling">
+              <input
+                type="password"
+                class="password-input"
+                id="password"
+                name="password"
+                placeholder="Ingrese su contraseña"
+                autocomplete="off"
+              />
+            </div>
+            <p
+              th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}"
+              th:errorclass="error"
+            ></p>
+          </div>
+          <div class="guardar-container">
+            <button type="submit" class="guardar-button">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- container -->
+
+    <!-- Footer -->
+    <div th:insert="~{user/template_user::footer}"></div>
+  </body>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      background-color: hsl(0, 0%, 95%);
+      height: 100dvh;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      max-width: fit-content;
+      margin: auto;
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+    .aling-items {
+      width: 20rem;
+    }
+
+    .registro-title {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    button {
+      text-decoration: none;
+      padding: 0;
+      border: none;
+      outline: none;
+      background: none;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+    }
+
+    input {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    label {
+      font-size: 1.1rem;
+      font-weight: 550;
+    }
+
+    .name-container,
+    .apellido-container,
+    .email-container,
+    .direccion-container,
+    .cel-container,
+    .password-container {
+      margin-bottom: 1rem;
+    }
+
+    input {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 0.2rem solid #bf7083;
+      transition: border 200ms ease-in-out;
+    }
+
+    input:hover {
+      border: 0.2rem solid #9f4147;
+    }
+
+    input:focus-visible {
+      outline: 0;
+    }
+
+    .guardar-button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      background-color: #bf7083;
+      color: #fff;
+      font-weight: 600;
+      transition: background-color 200ms ease;
+    }
+
+    .guardar-button:hover {
+      background-color: #9f4147;
+    }
+  </style>
+</html>
