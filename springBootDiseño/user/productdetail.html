@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:insert="~{user/template_user::head}"></head>
+
+  <body>
+    <!-- Navigation -->
+    <div th:insert="~{user/template_user::header}" th:if="${id==null}"></div>
+    <div
+      th:insert="~{user/template_user::userlogger}"
+      th:unless="${id==null}"
+    ></div>
+
+    <!-- Page Content -->
+    <!-- Blog Post -->
+    <div class="aling-menu">
+      <div class="contenedor">
+        <div class="imagen">
+          <a href="#">
+            <img
+              class="img-img"
+              th:src="@{/images/{img}  (img = ${product.image})} "
+              alt=""
+              src="img/takis.jpg"
+            />
+          </a>
+        </div>
+        <div class="datos-contenedor">
+          <form th:action="@{/user/cart/add-product}" method="POST">
+            <input type="hidden" th:value="${product.id}" name="idProduct" />
+            <input
+              type="hidden"
+              th:value="${product.name}"
+              name="nameProduct"
+            />
+            <input type="hidden" th:value="${product.price}" name="price" />
+
+            <!--No va nada-->
+            <h2 class="title" th:text="${product.name}">Takis Fuego</h2>
+            <!--No va nada-->
+            <ul class="ul-container">
+              <li class="price">
+                <h5 th:text=" 'Precio : S/.'+ ${product.price}">s/10.00</h5>
+              </li>
+              <li class="stock">
+                <h5 th:text=" 'Stock : '+ ${stock}+ ' unidades'">10</h5>
+              </li>
+              <li class="descripcion">
+                <p th:text="'Descripción: '+ ${product.description}">
+                  Takis fuego potente picor
+                </p>
+              </li>
+              <li class="cantidad">
+                <h6>
+                  Cantidad:
+                  <input
+                    class="cantidad-input"
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    autocomplete="off"
+                    min="1"
+                    max="5"
+                    value="1"
+                  />
+                </h6>
+              </li>
+            </ul>
+
+            <button type="submit" class="añadir-carrito">
+              Añadir al carrito
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <div th:insert="~{user/template_user::footer}"></div>
+  </body>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      background-color: hsl(0, 0%, 95%);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 2rem;
+    }
+
+    .contenedor {
+      max-width: fit-content;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .datos-contenedor {
+      margin: 1rem;
+    }
+
+    button {
+      padding: 0;
+      border: none;
+      outline: none;
+      background: none;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+    }
+
+    input {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .price h5 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stock h5 {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .descripcion p {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    .imagen a img {
+      width: 30rem;
+    }
+
+    .cantidad h6 {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .cantidad-input {
+      margin-top: 0.5rem;
+      width: 4rem;
+      padding: 0.3rem;
+      border: 0.2rem solid #bf7083;
+      border-radius: 0.5rem;
+      transition: border 200ms ease-in-out;
+    }
+
+    .cantidad-input:hover {
+      border: 0.2rem solid #9f4147;
+    }
+
+    .cantidad-input:focus-visible {
+      outline: 0;
+    }
+
+    .añadir-carrito {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      background-color: #bf7083;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 600;
+      transition: background-color 200ms ease-in-out;
+    }
+
+    .añadir-carrito:hover {
+      background-color: #9f4147;
+    }
+  </style>
+</html>
