@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:insert="~{user/template_user::head}"></head>
+
+  <body>
+    <!-- Navigation -->
+    <div th:insert="~{user/template_user::header}" th:if="${id==null}"></div>
+    <div
+      th:insert="~{user/template_user::userlogger}"
+      th:unless="${id==null}"
+    ></div>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="aling">
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-9">
+                <div class="datos-container">
+                  <h5 class="title-orden">DATOS ORDEN</h5>
+                  <h6
+                    class="nombre"
+                    th:text="'Nombre: '+ ${user.firtName} + ' '+ ${user.lastName}"
+                  >
+                    Nombre:
+                  </h6>
+                  <h6 class="email" th:text="'Correo: '+ ${user.email}">
+                    Correo:
+                  </h6>
+                  <h6 class="address" th:text="'Dirección: '+ ${user.address}">
+                    Dirección
+                  </h6>
+
+                  <h5 class="title-products">PRODUCTOS</h5>
+                  <div class="container-table" role="alert">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Producto</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="item:${cart} ">
+                          <td th:text="${item.nameProduct}">Nombre</td>
+                          <td th:text="${item.price}">Precio</td>
+                          <td th:text="${item.quantity}">Cantidad</td>
+                          <td th:text="${item.getTotalPriceItem()}">Total</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="resumen-container">
+              <h2 class="card-title">Resumen Orden</h2>
+
+              <ul class="lista">
+                <li class="total">
+                  <h5 th:text="${total}">Total:</h5>
+                </li>
+                <a th:href="@{/user/order/create-order}" class="boton"
+                  >Generar</a
+                >
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <div th:insert="~{user/template_user::footer}"></div>
+  </body>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      background-color: hsl(0, 0%, 95%);
+    }
+
+    .container {
+      margin: auto;
+      max-width: fit-content;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      margin-top: 2rem;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    .title-orden {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .datos-container h6 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .datos-container .address {
+      margin-bottom: 2rem;
+    }
+
+    .title-products {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 1rem 0;
+      background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .container-table {
+      margin-bottom: 2rem;
+    }
+
+    .table {
+      margin: auto;
+      max-width: fit-content;
+      background-color: hsl(0, 0%, 95%);
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+
+    thead th {
+      padding: 0 1rem;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    tbody td {
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 1.3rem;
+    }
+
+    tbody td a {
+      background-color: #bf7083;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: background-color 200ms ease-in-out;
+    }
+
+    tbody td a:hover {
+      background-color: #9f4147;
+    }
+
+    .resumen-container h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 1rem 0;
+      background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lista .total {
+      font-size: 2rem;
+      background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-bottom: 3rem;
+    }
+
+    .boton {
+        text-decoration: none;
+      background-color: #bf7083;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: background-color 200ms ease-in-out;
+    }
+
+    .boton:hover {
+      background-color: #9f4147;
+    }
+  </style>
+</html>
