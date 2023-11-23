@@ -9,23 +9,26 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: hsl(0, 0%, 95%);
-  height: 100dvh;
+  background-color: hsl(0, 0%, 100%);
+  
+}
+
+.container-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 28.5%;
   background-color: #fff;
-  max-width: fit-content;
-  margin: auto;
-  border-radius: 1rem;
-  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.aling-items{
-    width: 20rem;
-
+.aling-items {
+  width: 20rem;
 }
 
 .registro-title {
@@ -64,37 +67,47 @@ label {
 .direccion-container,
 .cel-container,
 .password-container {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
-input{
-
+input {
   margin-top: 0.5rem;
   padding: 0.5rem;
   width: 100%;
   border-radius: 0.5rem;
   border: 0.2rem solid #bf7083;
   transition: border 200ms ease-in-out;
-
 }
 
-input:hover{
-    border: 0.2rem solid #9f4147;
+input:hover {
+  border: 0.2rem solid #9f4147;
 }
 
-input:focus-visible{
-    outline: 0;
+input:focus-visible {
+  outline: 0;
 }
 
-.guardar-button{
-    padding: 0.5rem 1rem;
+.guardar-button {
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   background-color: #bf7083;
   color: #fff;
   font-weight: 600;
+  width: 100%;
   transition: background-color 200ms ease;
 }
 
-.guardar-button:hover{
-    background-color: #9f4147;
+.guardar-button:hover {
+  background-color: #9f4147;
+}
+
+.imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.imagen img{
+  width: 100%;
 }

@@ -4,205 +4,201 @@
 
   <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
-      <div class="container-nav">
-        <a class="marca-title" th:href="@{/home}">Marca</a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="container-ul" id="navbarResponsive">
-          <ul class="login-ul">
-            <li class="login-li">
-              <a class="login-title" th:href="@{/login}">Login</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 
     <!-- Page Content -->
-    <div class="container">
-      <div class="aling">
-        <div class="container-ingresar">
-          <h2>Ingresar</h2>
+    <div class="container-main">
+      <div class="imagen">
+        <img src="./user/img/img-3.jpg" alt="imagen" />
+      </div>
+
+      <div class="container">
+        <div class="aling">
+          <div class="container-ingresar">
+            <h2>Ingresar</h2>
+          </div>
+
+          <form class="form-all" th:action="@{/login}" method="post">
+            <div class="email-container">
+              <label class="email-title" for="username"> Email </label>
+              <div class="email-aling">
+                <input
+                  type="email"
+                  class="email-input"
+                  id="username"
+                  name="username"
+                  placeholder="Ingrese su email"
+                  required
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="password-container">
+              <label class="password-label" for="password"> Contraseña</label>
+              <div class="password-aling">
+                <input
+                  type="password"
+                  class="password-input"
+                  id="password"
+                  name="password"
+                  placeholder="Ingrese su contraseña"
+                  required
+                />
+              </div>
+            </div>
+          </form>
+          <div class="boton-aling">
+            <div class="container-into">
+              <button type="submit" class="ingresar-btn">
+                <span class="ingresar"></span> Ingresar
+              </button>
+            </div>
+            <a th:href="@{/register}" class="register-link">Registrarse</a>
+          </div>
         </div>
-
-        <form class="form-all" th:action="@{/login}" method="post">
-          <div class="email-container">
-            <label class="email-title" for="username"> Email </label>
-            <div class="email-aling">
-              <input
-                type="email"
-                class="email-input"
-                id="username"
-                name="username"
-                placeholder="Ingrese su email"
-                required
-                autocomplete="off"
-              />
-            </div>
-          </div>
-
-          <div class="password-container">
-            <label class="password-label" for="password"> Contraseña</label>
-            <div class="password-aling">
-              <input
-                type="password"
-                class="password-input"
-                id="password"
-                name="password"
-                placeholder="Ingrese su contraseña"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="container-into">
-            <button type="submit" class="ingresar-btn">
-              <span class="ingresar"></span> Ingresar
-            </button>
-          </div>
-        </form>
-        <a th:href="@{/register}" class="register-link"
-          >Si aún no tiene cuenta aqui puede registrarse</a
-        >
       </div>
     </div>
     <!-- /.container -->
-
-    <!-- Footer -->
-    <div th:fragment="footer">
-      <footer class="footer-into">
-        <div class="container-footer">
-          <p class="footer-text">Copyright &copy; Jast 2023</p>
-        </div>
-      </footer>
-      <style>
-        *,
-        *::before,
-        ::after {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
-        body {
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-            Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-            sans-serif;
-          background-color: hsl(0, 0%, 95%);
-          height: 100dvh;
-        }
-
-        .container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: #fff;
-          max-width: fit-content;
-          margin: auto;
-          border-radius: 1rem;
-          padding: 2rem;
-        }
-
-        .container-ingresar {
-          font-size: 1.5rem;
-          margin-bottom: 2rem;
-          background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .email-container {
-          display: block;
-        }
-
-        button {
-          padding: 0;
-          border: none;
-          outline: none;
-          background: none;
-          font-family: inherit;
-          font-size: inherit;
-          cursor: pointer;
-        }
-
-        input {
-          font-family: inherit;
-          font-size: inherit;
-        }
-
-        label {
-          font-size: 1.1rem;
-          font-weight: 550;
-        }
-
-        .email-container,
-        .password-container,
-        .container-into {
-          margin-bottom: 1rem;
-        }
-
-        .email-input,
-        .password-input {
-          margin-top: 0.5rem;
-          padding: 0.5rem;
-          width: 100%;
-          border-radius: 0.5rem;
-          border: 0.2rem solid #bf7083;
-          transition: border 200ms ease-in-out;
-        }
-
-        .email-input:hover,
-        .password-input:hover {
-          border: 0.2rem solid #9f4147;
-        }
-
-        .email-input,
-        .password-input:focus-visible {
-          outline: 0;
-        }
-
-        .ingresar-btn {
-          padding: 0.5rem 1rem;
-          border-radius: 0.5rem;
-          background-color: #bf7083;
-          color: #fff;
-          font-weight: 600;
-          transition: background-color 200ms ease;
-        }
-
-        .ingresar-btn:hover {
-          background-color: #9f4147;
-        }
-
-        .register-link {
-          text-decoration: none;
-          background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          font-weight: 600;
-        }
-
-        /*estilo del profe*/
-        .footer {
-          position: absolute;
-          bottom: 0px;
-          height: 60px;
-          width: 100%;
-        }
-      </style>
-    </div>
   </body>
+
+  <style>
+    *,
+    *::before,
+    ::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container-main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100dvh;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      background-color: hsl(0, 0%, 100%);
+    }
+
+    .container {
+      width: 28.5%;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container-ingresar {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(180deg, #9f4147 0%, #bf7083 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .aling {
+      width: 20rem;
+    }
+
+    .email-container {
+      display: block;
+    }
+
+    button {
+      padding: 0;
+      border: none;
+      outline: none;
+      background: none;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+    }
+
+    input {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    label {
+      font-size: 1.1rem;
+      font-weight: 550;
+    }
+
+    .email-container,
+    .password-container {
+      margin-bottom: 1rem;
+    }
+
+    .email-input,
+    .password-input {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 0.2rem solid #bf7083;
+      transition: border 200ms ease-in-out;
+    }
+
+    .email-input:hover,
+    .password-input:hover {
+      border: 0.2rem solid #9f4147;
+    }
+
+    .email-input,
+    .password-input:focus-visible {
+      outline: 0;
+    }
+
+    .boton-aling {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .ingresar-btn {
+      padding: 0.5rem 1rem;
+      margin-right: 1rem;
+      border-radius: 0.5rem;
+      background-color: #bf7083;
+      color: #fff;
+      font-weight: 600;
+      transition: background-color 200ms ease;
+    }
+
+    .ingresar-btn:hover {
+      background-color: #9f4147;
+    }
+
+    .register-link {
+      text-decoration: none;
+      padding: 0.34rem 0.9rem;
+      border-radius: 0.5rem;
+      border: 0.2rem solid #bf7083;
+      font-weight: 600;
+      color: #bf7083;
+      transition: border 200ms ease;
+      cursor: pointer;
+    }
+
+    .register-link:hover {
+      border: 0.2rem solid #9f4147;
+      color: #9f4147;
+    }
+
+    .imagen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .imagen img {
+      width: 100%;
+    }
+  </style>
 </html>
